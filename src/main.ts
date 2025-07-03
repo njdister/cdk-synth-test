@@ -86,13 +86,13 @@ class TestPipelineStack extends cdk.Stack {
     });
 
     pipeline.addStage(
-      new TestStage(app, 'TestStage-USE1', pipelineProps!.synthesizer, {
+      new TestStage(this, 'TestStage-USE1', pipelineProps!.synthesizer, {
         env: { account: '450848035474', region: 'us-east-1' },
       }),
     );
 
     pipeline.addStage(
-      new TestStage(app, 'TestStage-USW2', pipelineProps!.synthesizer, {
+      new TestStage(this, 'TestStage-USW2', pipelineProps!.synthesizer, {
         env: { account: '450848035474', region: 'us-west-2' },
       }),
     );
