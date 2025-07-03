@@ -1,6 +1,7 @@
 import { awscdk, javascript } from 'projen';
+
 const project = new awscdk.AwsCdkTypeScriptApp({
-  cdkVersion: '2.1.0',
+  cdkVersion: '2.203.1',
   defaultReleaseBranch: 'main',
   name: '_cdk_synth_test',
   packageManager: javascript.NodePackageManager.PNPM,
@@ -11,4 +12,9 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   // devDeps: [],             /* Build dependencies for this module. */
   // packageName: undefined,  /* The "name" in package.json. */
 });
+
+project.cdkConfig.json.addOverride('context', {
+  '@aws-cdk/core:bootstrapQualifier': 'infrav200',
+});
+
 project.synth();

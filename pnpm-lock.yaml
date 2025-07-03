@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       aws-cdk-lib:
-        specifier: ^2.1.0
+        specifier: ^2.203.1
         version: 2.203.1(constructs@10.4.2)
       constructs:
         specifier: ^10.0.5
