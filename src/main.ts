@@ -50,8 +50,8 @@ class TestStage extends cdk.Stage {
 }
 
 interface TestPipelineStackProps {
-  readonly synthesizer: cdk.DefaultStackSynthesizer,
-  readonly app: cdk.App,
+  readonly synthesizer: cdk.DefaultStackSynthesizer;
+  readonly app: cdk.App;
 }
 
 class TestPipelineStack extends cdk.Stack {
@@ -65,7 +65,7 @@ class TestPipelineStack extends cdk.Stack {
       selfMutation: true,
       synth: new cdk.pipelines.ShellStep('Synth', {
         input: cdk.pipelines.CodePipelineSource.gitHub(
-          'laerdallabs/fake-cdk-synth-test',
+          'njdister/cdk-synth-test',
           'main',
           {
             authentication: cdk.SecretValue.secretsManager('arn:aws:secretsmanager:us-east-1:450848035474:secret:/infrav200/github-token-SP0rWy'),
@@ -87,13 +87,13 @@ class TestPipelineStack extends cdk.Stack {
 
     pipeline.addStage(
       new TestStage(app, 'TestStage-USE1', pipelineProps!.synthesizer, {
-        env: { account: '450848035474', region: 'us-east-1'},
+        env: { account: '450848035474', region: 'us-east-1' },
       }),
     );
 
     pipeline.addStage(
       new TestStage(app, 'TestStage-USW2', pipelineProps!.synthesizer, {
-        env: { account: '450848035474', region: 'us-west-2'},
+        env: { account: '450848035474', region: 'us-west-2' },
       }),
     );
   }
@@ -108,7 +108,7 @@ new TestPipelineStack(app, 'TestPipelineStack',
     app: app,
   },
   {
-    env: { account: '450848035474', region: 'us-east-1' }
+    env: { account: '450848035474', region: 'us-east-1' },
   },
 );
 
